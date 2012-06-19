@@ -1,0 +1,10 @@
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DATA\bin\Debug\SPRINGSITE.DATA.dll.config
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DATA\bin\Debug\SPRINGSITE.DATA.dll
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DATA\bin\Debug\SPRINGSITE.DATA.pdb
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DATA\bin\Debug\EntityFramework.dll
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DATA\bin\Debug\EntityFramework.xml
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DATA\obj\Debug\SPRINGSITE.DATA.dll
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DATA\obj\Debug\SPRINGSITE.DATA.pdb
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DATA\obj\Debug\SPRINGSITE.DATA.csprojResolveAssemblyReference.cache
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DATA\bin\Debug\SPRINGSITE.DOMAIN.dll
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DATA\bin\Debug\SPRINGSITE.DOMAIN.pdb

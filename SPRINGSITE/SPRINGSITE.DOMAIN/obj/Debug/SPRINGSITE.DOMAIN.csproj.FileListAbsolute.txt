@@ -1,0 +1,7 @@
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DOMAIN\bin\Debug\SPRINGSITE.DOMAIN.dll.config
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DOMAIN\bin\Debug\SPRINGSITE.DOMAIN.dll
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DOMAIN\bin\Debug\SPRINGSITE.DOMAIN.pdb
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DOMAIN\bin\Debug\EntityFramework.dll
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DOMAIN\bin\Debug\EntityFramework.xml
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DOMAIN\obj\Debug\SPRINGSITE.DOMAIN.dll
+D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.DOMAIN\obj\Debug\SPRINGSITE.DOMAIN.pdb
