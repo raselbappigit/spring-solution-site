@@ -42,6 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\AboutContentService.cs" />
+    <Compile Include="Content\BannerContentService.cs" />
+    <Compile Include="Content\ContactContentService.cs" />
+    <Compile Include="Content\HomeContentService.cs" />
+    <Compile Include="Content\PortfolioContentService.cs" />
+    <Compile Include="Info\ClientInfoService.cs" />
+    <Compile Include="Info\ContactInfoService.cs" />
+    <Compile Include="Info\QuickMailInfoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\ProfileService.cs" />
     <Compile Include="Security\SecurityService.cs" />
@@ -56,6 +64,7 @@
       <Name>SPRINGSITE.DOMAIN</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

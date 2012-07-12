@@ -88,10 +88,8 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20505.0\lib\net40\System.Web.Http.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Http.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20505.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
@@ -134,13 +132,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controllers\ACController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BCController.cs" />
+    <Compile Include="Controllers\CCController.cs" />
+    <Compile Include="Controllers\ClientInfoController.cs" />
+    <Compile Include="Controllers\ContactInfoController.cs" />
+    <Compile Include="Controllers\HCController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MailInfoController.cs" />
+    <Compile Include="Controllers\PCController.cs" />
+    <Compile Include="Controllers\RMController.cs" />
+    <Compile Include="Controllers\ThemeController.cs" />
+    <Compile Include="Controllers\UMController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Controller Helpers\ControllerExtensions.cs" />
+    <Compile Include="Helpers\Html Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DataTableParamModel.cs" />
+    <Compile Include="Models\DomainModels.cs" />
+    <Compile Include="Models\MessageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\DomainViewModels.cs" />
+    <Compile Include="ViewModels\TableViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\DataTables-1.9.1\docs\media\css\doc.css" />
@@ -270,6 +287,13 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\App\delete.png" />
+    <Content Include="Images\App\detail.png" />
+    <Content Include="Images\App\details_close.png" />
+    <Content Include="Images\App\details_open.png" />
+    <Content Include="Images\App\edit.png" />
+    <Content Include="Images\App\setting.png" />
+    <Content Include="Scripts\App\um-jquery.js" />
     <Content Include="Scripts\DataTables-1.9.1\docs\media\js\doc.js" />
     <Content Include="Scripts\DataTables-1.9.1\docs\media\js\jquery.js" />
     <Content Include="Scripts\DataTables-1.9.1\docs\media\js\shBrushJScript.js" />
@@ -362,9 +386,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Helpers\Controller Helpers\" />
-    <Folder Include="Helpers\Html Helpers\" />
-    <Folder Include="ViewModels\" />
+    <Folder Include="Content\App\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -381,6 +403,27 @@
     <None Include="Scripts\DataTables-1.9.1\extras\FixedColumns\media\js\FixedColumns.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.1\extras\Scroller\media\js\Scroller.min.js.gz" />
     <None Include="Scripts\DataTables-1.9.1\extras\TableTools\media\js\TableTools.min.js.gz" />
+    <Content Include="Views\Account\ForgetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordSuccess.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\RM\Index.cshtml" />
+    <Content Include="Views\UM\Index.cshtml" />
+    <Content Include="Views\AC\Index.cshtml" />
+    <Content Include="Views\BC\Index.cshtml" />
+    <Content Include="Views\CC\Index.cshtml" />
+    <Content Include="Views\HC\Index.cshtml" />
+    <Content Include="Views\PC\Index.cshtml" />
+    <Content Include="Views\ClientInfo\Index.cshtml" />
+    <Content Include="Views\ContactInfo\Index.cshtml" />
+    <Content Include="Views\MailInfo\Index.cshtml" />
+    <Content Include="Views\Shared\_AppPartial.cshtml" />
+    <Content Include="Views\UM\Create.cshtml" />
+    <Content Include="Views\UM\Edit.cshtml" />
+    <Content Include="Views\UM\Delete.cshtml" />
+    <Content Include="Views\UM\Role.cshtml" />
+    <Content Include="Views\UM\_UserRoles.cshtml" />
+    <Content Include="Views\UM\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SPRINGSITE.DATA\SPRINGSITE.DATA.csproj">

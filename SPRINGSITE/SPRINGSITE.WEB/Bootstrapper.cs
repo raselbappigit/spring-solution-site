@@ -7,7 +7,7 @@ using SPRINGSITE.DATA;
 using System.Web.Http;
 using Autofac;
 using System.Reflection;
-using SPRINGSITE.SERVICE.Security;
+using SPRINGSITE.SERVICE;
 using Autofac.Integration.Mvc;
 
 namespace SPRINGSITE.WEB

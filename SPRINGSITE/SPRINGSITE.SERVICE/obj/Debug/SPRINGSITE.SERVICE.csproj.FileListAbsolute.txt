@@ -9,3 +9,14 @@ D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.SERVICE\bin\Deb
 D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.SERVICE\bin\Debug\SPRINGSITE.DATA.pdb
 D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.SERVICE\bin\Debug\SPRINGSITE.DOMAIN.pdb
 D:\Spring Solution\Spring Web Site Project\SPRINGSITE\SPRINGSITE.SERVICE\bin\Debug\EntityFramework.xml
+D:\Spring Solution\Spring Web Site Project\spring-solution-site\SPRINGSITE\SPRINGSITE.SERVICE\bin\Debug\SPRINGSITE.SERVICE.dll
+D:\Spring Solution\Spring Web Site Project\spring-solution-site\SPRINGSITE\SPRINGSITE.SERVICE\bin\Debug\SPRINGSITE.SERVICE.pdb
+D:\Spring Solution\Spring Web Site Project\spring-solution-site\SPRINGSITE\SPRINGSITE.SERVICE\bin\Debug\SPRINGSITE.DATA.dll
+D:\Spring Solution\Spring Web Site Project\spring-solution-site\SPRINGSITE\SPRINGSITE.SERVICE\bin\Debug\SPRINGSITE.DOMAIN.dll
+D:\Spring Solution\Spring Web Site Project\spring-solution-site\SPRINGSITE\SPRINGSITE.SERVICE\bin\Debug\EntityFramework.dll
+D:\Spring Solution\Spring Web Site Project\spring-solution-site\SPRINGSITE\SPRINGSITE.SERVICE\bin\Debug\SPRINGSITE.DATA.pdb
+D:\Spring Solution\Spring Web Site Project\spring-solution-site\SPRINGSITE\SPRINGSITE.SERVICE\bin\Debug\SPRINGSITE.DOMAIN.pdb
+D:\Spring Solution\Spring Web Site Project\spring-solution-site\SPRINGSITE\SPRINGSITE.SERVICE\bin\Debug\EntityFramework.xml
+D:\Spring Solution\Spring Web Site Project\spring-solution-site\SPRINGSITE\SPRINGSITE.SERVICE\obj\Debug\SPRINGSITE.SERVICE.csprojResolveAssemblyReference.cache
+D:\Spring Solution\Spring Web Site Project\spring-solution-site\SPRINGSITE\SPRINGSITE.SERVICE\obj\Debug\SPRINGSITE.SERVICE.dll
+D:\Spring Solution\Spring Web Site Project\spring-solution-site\SPRINGSITE\SPRINGSITE.SERVICE\obj\Debug\SPRINGSITE.SERVICE.pdb

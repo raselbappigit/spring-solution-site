@@ -8,8 +8,8 @@ namespace SPRINGSITE.DATA
 {
     public class ProfileRepository : RepositoryBase<Profile>, IProfileRepository
     {
-        public ProfileRepository(IDatabaseFactory databaseFactory)
-            : base(databaseFactory)
+        public ProfileRepository(IDatabaseFactory iDatabaseFactory)
+            : base(iDatabaseFactory)
         {
         }
 

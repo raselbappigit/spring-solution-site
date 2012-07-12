@@ -46,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Content\AboutContent.cs" />
+    <Compile Include="Entities\Content\BannerContent.cs" />
+    <Compile Include="Entities\Content\ContactContent.cs" />
+    <Compile Include="Entities\Content\HomeContent.cs" />
+    <Compile Include="Entities\Content\PortfolioContent.cs" />
+    <Compile Include="Entities\Info\ClientInfo.cs" />
+    <Compile Include="Entities\Info\ContactInfo.cs" />
+    <Compile Include="Entities\Info\QuickMailInfo.cs" />
     <Compile Include="Entities\Membership\Profile.cs" />
     <Compile Include="Entities\Membership\Role.cs" />
     <Compile Include="Entities\Membership\User.cs" />

@@ -26,6 +26,18 @@ namespace SPRINGSITE.DATA
                 m.MapLeftKey("UserName");
                 m.MapRightKey("RoleName");
             });
+
+            //one to one relationship with user mapping
+            modelBuilder.Entity<User>()
+            .HasOptional(u => u.Profile)
+            .WithMany()
+            .HasForeignKey(u => u.ProfileId);
+
+            //one to one relationship with profile mapping
+            modelBuilder.Entity<Profile>()
+            .HasRequired(u => u.User)
+            .WithMany()
+            .HasForeignKey(u => u.UserName);
         }
 
     }

@@ -9,8 +9,8 @@ namespace SPRINGSITE.DATA
 {
     public class UserRepository : RepositoryBase<User>, IUserRepository
     {
-        public UserRepository(IDatabaseFactory databaseFactory)
-            : base(databaseFactory)
+        public UserRepository(IDatabaseFactory iDatabaseFactory)
+            : base(iDatabaseFactory)
         {
 
         }

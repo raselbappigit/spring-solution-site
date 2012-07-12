@@ -39,20 +39,20 @@ namespace SPRINGSITE.SERVICE
 
     public class SecurityService : ISecurityService
     {
-        private readonly IUserRepository _userRepository;
-        private readonly IRoleRepository _roleRepository;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserRepository _iUserRepository;
+        private readonly IRoleRepository _iRoleRepository;
+        private readonly IUnitOfWork _iUnitOfWork;
 
-        public SecurityService(IUserRepository userRepository, IRoleRepository roleRepository, IUnitOfWork unitOfWork)
+        public SecurityService(IUserRepository iUserRepository, IRoleRepository iRoleRepository, IUnitOfWork iUnitOfWork)
         {
-            this._userRepository = userRepository;
-            this._roleRepository = roleRepository;
-            this._unitOfWork = unitOfWork;
+            this._iUserRepository = iUserRepository;
+            this._iRoleRepository = iRoleRepository;
+            this._iUnitOfWork = iUnitOfWork;
         }
 
         public IEnumerable<User> GetUsers()
         {
-            var users = _userRepository.GetAll();
+            var users = _iUserRepository.GetAll();
             return users;
         }
 
@@ -64,26 +64,26 @@ namespace SPRINGSITE.SERVICE
 
         public User GetUser(string userName)
         {
-            var user = _userRepository.GetById(userName);
+            var user = _iUserRepository.GetById(userName);
             return user;
         }
 
         public void CreateUser(User user)
         {
-            _userRepository.Add(user);
+            _iUserRepository.Add(user);
             Save();
         }
 
         public void UpdateUser(User user)
         {
-            _userRepository.Update(user);
+            _iUserRepository.Update(user);
             Save();
         }
 
         public void DeleteUser(string userName)
         {
             var user = GetUser(userName);
-            _userRepository.Delete(user);
+            _iUserRepository.Delete(user);
             Save();
         }
 
@@ -100,24 +100,24 @@ namespace SPRINGSITE.SERVICE
 
         public IEnumerable<Role> GetRoles()
         {
-            var roles = _roleRepository.GetAll();
+            var roles = _iRoleRepository.GetAll();
             return roles;
         }
 
         public Role GetRole(string roleName)
         {
-            var role = _roleRepository.GetById(roleName);
+            var role = _iRoleRepository.GetById(roleName);
             return role;
         }
 
         public IEnumerable<User> GetUsersInRole(string roleName)
         {
             List<User> users = null;
-            var role = _roleRepository.GetById(roleName);
+            var role = _iRoleRepository.GetById(roleName);
 
             if (role != null)
             {
-                users = _roleRepository.GetById(roleName).Users.ToList();
+                users = _iRoleRepository.GetById(roleName).Users.ToList();
             }
 
             return users;
@@ -125,26 +125,26 @@ namespace SPRINGSITE.SERVICE
 
         public void CreateRole(Role role)
         {
-            _roleRepository.Add(role);
+            _iRoleRepository.Add(role);
             Save();
         }
 
         public void UpdateRole(Role role)
         {
-            _roleRepository.Update(role);
+            _iRoleRepository.Update(role);
             Save();
         }
 
         public void DeleteRole(string roleName)
         {
             var role = GetRole(roleName);
-            _roleRepository.Delete(role);
+            _iRoleRepository.Delete(role);
             Save();
         }
 
         public void AddUserToRole(string userName, List<string> roleNames)
         {
-            _userRepository.AssignRole(userName, roleNames);
+            _iUserRepository.AssignRole(userName, roleNames);
             Save();
         }
 
@@ -220,7 +220,7 @@ namespace SPRINGSITE.SERVICE
 
         public void Save()
         {
-            _unitOfWork.Commit();
+            _iUnitOfWork.Commit();
         }
 
     }

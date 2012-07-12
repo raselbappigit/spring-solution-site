@@ -51,6 +51,10 @@ namespace SPRINGSITE.DOMAIN
 
         //public bool IsLoggedIn { get; set; }
 
+        //one to one relationship with profile
+        public int? ProfileId { get; set; }
+        public virtual Profile Profile { get; set; }
+
         public virtual ICollection<Role> Roles { get; set; }
     }
 }

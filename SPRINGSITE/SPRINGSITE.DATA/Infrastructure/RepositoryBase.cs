@@ -12,12 +12,12 @@ namespace SPRINGSITE.DATA
     {
         private AppDbContext _dataContext;
 
-        private readonly IDbSet<T> _dbset;
+        private readonly IDbSet<T> _iDbset;
 
-        protected RepositoryBase(IDatabaseFactory databaseFactory)
+        protected RepositoryBase(IDatabaseFactory iDatabaseFactory)
         {
-            DatabaseFactory = databaseFactory;
-            _dbset = DataContext.Set<T>();
+            DatabaseFactory = iDatabaseFactory;
+            _iDbset = DataContext.Set<T>();
         }
 
         protected IDatabaseFactory DatabaseFactory
@@ -32,42 +32,42 @@ namespace SPRINGSITE.DATA
         }
         public virtual void Add(T entity)
         {
-            _dbset.Add(entity);
+            _iDbset.Add(entity);
         }
         public virtual void Update(T entity)
         {
-            _dbset.Attach(entity);
+            _iDbset.Attach(entity);
             _dataContext.Entry(entity).State = EntityState.Modified;
         }
         public virtual void Delete(T entity)
         {
-            _dbset.Remove(entity);
+            _iDbset.Remove(entity);
         }
         public virtual void Delete(Expression<Func<T, bool>> where)
         {
-            IEnumerable<T> objects = _dbset.Where<T>(where).AsEnumerable();
+            IEnumerable<T> objects = _iDbset.Where<T>(where).AsEnumerable();
             foreach (T obj in objects)
-                _dbset.Remove(obj);
+                _iDbset.Remove(obj);
         }
         public virtual T GetById(long id)
         {
-            return _dbset.Find(id);
+            return _iDbset.Find(id);
         }
         public virtual T GetById(string id)
         {
-            return _dbset.Find(id);
+            return _iDbset.Find(id);
         }
         public virtual IEnumerable<T> GetAll()
         {
-            return _dbset.ToList();
+            return _iDbset.ToList();
         }
         public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
         {
-            return _dbset.Where(where).ToList();
+            return _iDbset.Where(where).ToList();
         }
         public T Get(Expression<Func<T, bool>> where)
         {
-            return _dbset.Where(where).FirstOrDefault<T>();
+            return _iDbset.Where(where).FirstOrDefault<T>();
         }
     }
 }

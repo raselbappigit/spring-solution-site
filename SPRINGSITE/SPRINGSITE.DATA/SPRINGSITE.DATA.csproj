@@ -58,6 +58,14 @@
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Content\AboutContentRepository.cs" />
+    <Compile Include="Repositories\Content\BannerContentRepository.cs" />
+    <Compile Include="Repositories\Content\ContactContentRepository.cs" />
+    <Compile Include="Repositories\Content\HomeContentRepository.cs" />
+    <Compile Include="Repositories\Content\PortfolioContentRepository.cs" />
+    <Compile Include="Repositories\Info\ClientInfoRepository.cs" />
+    <Compile Include="Repositories\Info\ContactInfoRepository.cs" />
+    <Compile Include="Repositories\Info\QuickMailInfoRepository.cs" />
     <Compile Include="Repositories\Membership\ProfileRepository.cs" />
     <Compile Include="Repositories\Membership\RoleRepository.cs" />
     <Compile Include="Repositories\Membership\UserRepository.cs" />

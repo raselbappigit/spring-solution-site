@@ -7,17 +7,17 @@ namespace SPRINGSITE.DATA
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly IDatabaseFactory _databaseFactory;
+        private readonly IDatabaseFactory _iDatabaseFactory;
         private AppDbContext _dataContext;
 
-        public UnitOfWork(IDatabaseFactory databaseFactory)
+        public UnitOfWork(IDatabaseFactory iDatabaseFactory)
         {
-            this._databaseFactory = databaseFactory;
+            this._iDatabaseFactory = iDatabaseFactory;
         }
 
         protected AppDbContext DataContext
         {
-            get { return _dataContext ?? (_dataContext = _databaseFactory.Get()); }
+            get { return _dataContext ?? (_dataContext = _iDatabaseFactory.Get()); }
         }
 
         public void Commit()

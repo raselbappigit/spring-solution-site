@@ -5,11 +5,13 @@ using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace SPRINGSITE.WEB.Models
+namespace SPRINGSITE.WEB
 {
 
     public class ChangePasswordModel
     {
+        public string UserName { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Current password")]
@@ -51,6 +53,7 @@ namespace SPRINGSITE.WEB.Models
         [Required]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address")]
+        [RegularExpression(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", ErrorMessage = "Invalid email address.")]
         public string Email { get; set; }
 
         [Required]
@@ -64,4 +67,14 @@ namespace SPRINGSITE.WEB.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+
+    //Model Class for Reset password 
+    public class ResetPasswordModel
+    {
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "User Email")]
+        public string UserEmail { get; set; }
+    }
+
 }

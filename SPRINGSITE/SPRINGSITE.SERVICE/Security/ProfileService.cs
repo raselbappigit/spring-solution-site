@@ -5,7 +5,7 @@ using System.Text;
 using SPRINGSITE.DOMAIN;
 using SPRINGSITE.DATA;
 
-namespace SPRINGSITE.SERVICE.Security
+namespace SPRINGSITE.SERVICE
 {
     public interface IProfileService
     {
@@ -21,49 +21,49 @@ namespace SPRINGSITE.SERVICE.Security
 
     public class ProfileService : IProfileService
     {
-        private readonly IProfileRepository _profileRepository;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IProfileRepository _iProfileRepository;
+        private readonly IUnitOfWork _iUnitOfWork;
 
-        public ProfileService(IProfileRepository profileRepository, IUnitOfWork unitOfWork)
+        public ProfileService(IProfileRepository iProfileRepository, IUnitOfWork iUnitOfWork)
         {
-            this._profileRepository = profileRepository;
-            this._unitOfWork = unitOfWork;
+            this._iProfileRepository = iProfileRepository;
+            this._iUnitOfWork = iUnitOfWork;
         }
 
         public IEnumerable<Profile> GetProfiles()
         {
-            var profiles = _profileRepository.GetAll();
+            var profiles = _iProfileRepository.GetAll();
             return profiles;
         }
 
         public Profile GetProfile(int id)
         {
-            var profile = _profileRepository.GetById(id);
+            var profile = _iProfileRepository.GetById(id);
             return profile;
         }
 
         public void CreateProfile(Profile profile)
         {
-            _profileRepository.Add(profile);
+            _iProfileRepository.Add(profile);
             Save();
         }
 
         public void UpdateProfile(Profile profile)
         {
-            _profileRepository.Update(profile);
+            _iProfileRepository.Update(profile);
             Save();
         }
 
         public void DeleteProfile(int id)
         {
             var profile = GetProfile(id);
-            _profileRepository.Delete(profile);
+            _iProfileRepository.Delete(profile);
             Save();
         }
 
         public void Save()
         {
-            _unitOfWork.Commit();
+            _iUnitOfWork.Commit();
         }
 
     }

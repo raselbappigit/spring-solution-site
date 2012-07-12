@@ -4,14 +4,32 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using SPRINGSITE.WEB.Models;
+using SPRINGSITE.SERVICE;
+using SPRINGSITE.DOMAIN;
 
 namespace SPRINGSITE.WEB.Controllers
 {
 
     [Authorize]
+    //[System.Web.Mvc.OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")] //for stopping browser previous and next option
     public class AccountController : Controller
     {
+        #region Member Variable
+
+        private readonly ISecurityService _iSecurityService;
+
+        #endregion
+
+        #region Constructor
+
+        public AccountController(ISecurityService iSecurityService)
+        {
+            this._iSecurityService = iSecurityService;
+        }
+
+        #endregion
+
+        #region Login and Logoff
 
         //
         // GET: /Account/Login
@@ -19,31 +37,7 @@ namespace SPRINGSITE.WEB.Controllers
         [AllowAnonymous]
         public ActionResult Login()
         {
-            return ContextDependentView();
-        }
-
-        //
-        // POST: /Account/JsonLogin
-
-        [AllowAnonymous]
-        [HttpPost]
-        public JsonResult JsonLogin(LoginModel model, string returnUrl)
-        {
-            if (ModelState.IsValid)
-            {
-                if (Membership.ValidateUser(model.UserName, model.Password))
-                {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    return Json(new { success = true, redirect = returnUrl });
-                }
-                else
-                {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                }
-            }
-
-            // If we got this far, something failed
-            return Json(new { errors = GetErrorsFromModelState() });
+            return View();
         }
 
         //
@@ -87,41 +81,17 @@ namespace SPRINGSITE.WEB.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        #endregion
+
+        #region Registation
+
         //
         // GET: /Account/Register
 
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return ContextDependentView();
-        }
-
-        //
-        // POST: /Account/JsonRegister
-
-        [AllowAnonymous]
-        [HttpPost]
-        public ActionResult JsonRegister(RegisterModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Attempt to register the user
-                MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, passwordQuestion: null, passwordAnswer: null, isApproved: true, providerUserKey: null, status: out createStatus);
-
-                if (createStatus == MembershipCreateStatus.Success)
-                {
-                    FormsAuthentication.SetAuthCookie(model.UserName, createPersistentCookie: false);
-                    return Json(new { success = true });
-                }
-                else
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(createStatus));
-                }
-            }
-
-            // If we got this far, something failed
-            return Json(new { errors = GetErrorsFromModelState() });
+            return View();
         }
 
         //
@@ -151,6 +121,10 @@ namespace SPRINGSITE.WEB.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        #endregion
+
+        #region Change Password
 
         //
         // GET: /Account/ChangePassword
@@ -204,28 +178,137 @@ namespace SPRINGSITE.WEB.Controllers
             return View();
         }
 
-        private ActionResult ContextDependentView()
+        #endregion
+
+        #region Reset Paswword
+
+        [AllowAnonymous]
+        public ActionResult ResetPassword(string username, string reset)
         {
-            string actionName = ControllerContext.RouteData.GetRequiredString("action");
-            if (Request.QueryString["content"] != null)
+            string userName = username;
+
+            MembershipUser currentUser = Membership.GetUser(userName);
+
+            if (!string.IsNullOrEmpty(reset) && !string.IsNullOrEmpty(username))
             {
-                ViewBag.FormAction = "Json" + actionName;
-                return PartialView();
+                if (currentUser != null)
+                {
+                    if (_iSecurityService.HashResetParams(currentUser.UserName) == reset)
+                    {
+
+                        var user = _iSecurityService.GetUser(userName);
+
+                        if (user != null)
+                        {
+                            ChangePasswordModel changePasswordModel = new ChangePasswordModel
+                            {
+                                UserName = user.UserName,
+                                OldPassword = reset,
+                                NewPassword = null,
+                                ConfirmPassword = null
+                            };
+                            return View(changePasswordModel);
+                        }
+                    }
+
+                }
+
+            }
+
+            return RedirectToAction("Login", "Security");
+
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult ResetPassword(ChangePasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                string userName = model.UserName;
+
+                MembershipUser currentUser = Membership.GetUser(userName);
+
+                bool resetPasswordSucceeded = false;
+
+                if (currentUser != null)
+                {
+                    if (_iSecurityService.HashResetParams(currentUser.UserName) == model.OldPassword)
+                    {
+                        string oldPassword = currentUser.ResetPassword();
+
+                        if (!string.IsNullOrEmpty(oldPassword))
+                        {
+                            resetPasswordSucceeded = currentUser.ChangePassword(oldPassword, model.NewPassword);
+                        }
+                    }
+                }
+
+                if (resetPasswordSucceeded)
+                {
+                    return RedirectToAction("ResetPasswordSuccess");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                }
+
+            }
+
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult ResetPasswordSuccess()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult ForgetPassword()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult ForgetPassword(ResetPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                User user = _iSecurityService.GetUsers().Where(x => x.Email == model.UserEmail).FirstOrDefault();
+
+                if (user != null)
+                {
+                    if (_iSecurityService.ForgetPassword(user))
+                    {
+                        //return RedirectToAction("Login", "Account");
+                        const string returnStr = @"<div class='message-info'>Please, check you email for reset password.</div>";
+                        return Content(returnStr);
+                    }
+                    else
+                    {
+                        return Content("Sorry, we could not find anyone with that email address!");
+                    }
+                }
+                else
+                {
+                    return Content("You are not valid user!");
+                }
+
             }
             else
             {
-                ViewBag.FormAction = actionName;
-                return View();
+                return Content("Please review your form!");
             }
         }
 
-        private IEnumerable<string> GetErrorsFromModelState()
-        {
-            return ModelState.SelectMany(x => x.Value.Errors.Select(error => error.ErrorMessage));
-        }
+        #endregion
 
         #region Status Codes
-        private static string ErrorCodeToString(MembershipCreateStatus createStatus)
+        public static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
             // See http://go.microsoft.com/fwlink/?LinkID=177550 for
             // a full list of status codes.
